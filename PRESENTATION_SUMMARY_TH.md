@@ -26,7 +26,7 @@ YOLOv9e-Seg ใช้ peak allocated VRAM ต่ำสุด การเลื�
 
 ## 2. ผลรวมโมเดล
 
-| Model | Mask mAP50-95 | AP50 | AP75 | Precision | Recall | F1 | TP-only IoU | TP-only Dice | Inference ms | Pipeline ms | FPS | Peak VRAM allocated MiB | Parameters |
+| Model | Mask mAP50-95 | AP50 | AP75 | Precision | Recall | F1 | TP-only IoU | TP-only Dice | Inference ms | Pipeline ms | FPS | Peak VRAM allocated (MiB) | Parameters |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | YOLO26x-Seg | 0.603730 | 0.903687 | 0.664426 | 0.946008 | 0.846285 | 0.893372 | 0.828873 | 0.902919 | 72.458 | 109.639 | 9.121 | 952.18 | 70,693,800 |
 | YOLO11x-Seg | 0.536674 | 0.875806 | 0.575845 | 0.938702 | 0.822228 | 0.876613 | 0.801385 | 0.886046 | 69.406 | 105.885 | 9.444 | 942.48 | 62,142,656 |
@@ -92,14 +92,6 @@ YOLOv9e-Seg มี peak allocated VRAM ต่ำสุด ต้องแยก�
 ผลนี้เป็น Person instance segmentation รายเฟรมบน MOTS20 ไม่ใช่ MOTS tracking; TP-only IoU/Dice พิจารณาเฉพาะคู่ที่ match ได้ ภาพวิดีโอต่อเนื่องสัมพันธ์กันและไม่ได้ทดสอบ statistical significance ค่าใกล้กันควรอ่านว่า near-tied descriptively รุ่น E/X และ C/L ไม่ใช่ capacity เท่ากัน ผลยังไม่ยืนยัน blur, low-light, มุมกล้อง, ระดับ occlusion หรือความพร้อมใช้งาน CCTV; เป็น candidate for later CCTV robustness evaluation เท่านั้น
 
 คง PASS WITH WARNINGS; pipeline ไม่รวม RLE preparation และ disk I/O
-
-## 8. สรุปสำหรับคุยกับพี่
-
-- รอบนี้เทียบ Largest (X/E) ด้วย pretrained YOLO บน MOTS20 โดยใช้เงื่อนไขเดียวกัน
-- ตัวนำด้าน accuracy คือ YOLO26x-Seg แต่ตัวที่ forward เร็วสุดคือ YOLOv9e-Seg
-- ถ้าจำกัด VRAM ให้เริ่มพิจารณา YOLOv9e-Seg โดยดู accuracy ที่ยอมรับได้ประกอบ
-- จุดที่ต้องระวังคือค่าที่ใกล้กันยังไม่ได้พิสูจน์นัยสำคัญ และ FPS ไม่ใช่ throughput ของระบบ CCTV เต็มรูปแบบ
-- ขั้นถัดไปควรเติม tier ที่ยังไม่ทดสอบด้วย protocol เดิม หลังได้รับอนุมัติเท่านั้น
 
 ## รายละเอียดเต็ม
 
