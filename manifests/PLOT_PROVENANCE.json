@@ -1,0 +1,16 @@
+{
+  "source": "metrics/TIER_RESULTS.csv",
+  "source_sha256": "8d4d273ad11661eea7d5c36788c6a59b2085e481604bc6be4bef6359e1093093",
+  "generator": "../YOLO_Instance_Segmentation_MOTS20_Scaling_Study/scripts/plot_tiers.py",
+  "generator_sha256": "b356fe42ae39d04d03152bb30aefbb9142a22a2f030ddfd75af613198d20aa51",
+  "timestamp": "2026-10-02T05:23:07.275773+00:00",
+  "inference_rerun": false,
+  "outputs": {
+    "outputs/plots/01_mask_map50_95.png": "3ec5c15ae3a3b28e094c4caa618575081af10b04ff642730693216073ba36899",
+    "outputs/plots/02_ap50_ap75.png": "30d37bd24a9bf94357dcd4a79e60761fd24a1459403351bf66c51d791f781ad5",
+    "outputs/plots/03_inference_latency.png": "9846bb1d5f3804605004184651ecb9c0fcaf9002406b5d01e5938038fb4e6870",
+    "outputs/plots/04_pipeline_fps.png": "bb93e6f76a4729d68bb8acd324249bf34f4b9239f74677519e092240b91173aa",
+    "outputs/plots/05_peak_vram.png": "0e946290cd685b0bba49157504a37584e41f57c73c1b49b4370a58daa237f44e",
+    "outputs/plots/06_accuracy_vs_latency.png": "606654f74d21a08de919813ddef7f9f1548e6fb1183868e1332099316ed095ab"
+  }
+}

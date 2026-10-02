@@ -1,0 +1,171 @@
+{
+  "round": 2,
+  "model": "yolov9e-seg.pt",
+  "start": "2026-09-29T07:38:05.291673+00:00",
+  "gpu_before": {
+    "timestamp": "2026-09-29T07:38:05.221407+00:00",
+    "state": {
+      "returncode": 0,
+      "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 197 MiB, 0 %, 69, 32.97 W, 585 MHz, 5000 MHz\n",
+      "stderr": ""
+    },
+    "processes": {
+      "returncode": 0,
+      "stdout": "211201, .venv/bin/python, 194 MiB\n",
+      "stderr": ""
+    }
+  },
+  "contaminated": false,
+  "load_seconds": 1.1158918959554285,
+  "baseline_allocated_mib": 263.52783203125,
+  "baseline_reserved_mib": 1412.0,
+  "gpu_samples": [
+    {
+      "timestamp": "2026-09-29T07:38:07.828923+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1571 MiB, 84 %, 70, 68.73 W, 1455 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1568 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:12.745814+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1571 MiB, 12 %, 70, 42.13 W, 1560 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1568 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:17.873928+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 0 %, 70, 42.81 W, 1590 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:20.720646+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 63 %, 70, 62.53 W, 1515 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:21.789839+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 71 %, 71, 37.03 W, 1455 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:22.867212+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 67 %, 71, 77.63 W, 1380 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:26.104351+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 0 %, 71, 39.63 W, 1470 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:29.654683+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 46 %, 71, 40.48 W, 1500 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:33.340158+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 45 %, 71, 41.06 W, 1530 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    },
+    {
+      "timestamp": "2026-09-29T07:38:37.536618+00:00",
+      "state": {
+        "returncode": 0,
+        "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 1823 MiB, 46 %, 70, 40.31 W, 1500 MHz, 5000 MHz\n",
+        "stderr": ""
+      },
+      "processes": {
+        "returncode": 0,
+        "stdout": "211201, .venv/bin/python, 1820 MiB\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "peak_gpu_allocated_mib": 855.4072265625,
+  "peak_gpu_reserved_mib": 1938.0,
+  "status": "PASS",
+  "end": "2026-09-29T07:38:41.281488+00:00",
+  "gpu_after": {
+    "timestamp": "2026-09-29T07:38:41.281508+00:00",
+    "state": {
+      "returncode": 0,
+      "stdout": "uuid, name, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%], temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.current.memory [MHz]\nGPU-568de064-e614-a45c-96c3-dbd80b8db026, Tesla T4, 580.178.04, 15360 MiB, 2097 MiB, 0 %, 70, 42.71 W, 1590 MHz, 5000 MHz\n",
+      "stderr": ""
+    },
+    "processes": {
+      "returncode": 0,
+      "stdout": "211201, .venv/bin/python, 2094 MiB\n",
+      "stderr": ""
+    }
+  }
+}

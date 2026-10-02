@@ -1,0 +1,21 @@
+{
+  "packages_unchanged": {
+    "ultralytics": true,
+    "torch": true,
+    "torchvision": true,
+    "numpy": true,
+    "pycocotools": true,
+    "Pillow": true,
+    "opencv-python": true,
+    "matplotlib": true
+  },
+  "framework_sources_unchanged": {
+    "engine/predictor.py": true,
+    "data/augment.py": true,
+    "utils/nms.py": true,
+    "utils/ops.py": true,
+    "models/yolo/segment/predict.py": true,
+    "models/yolo/detect/predict.py": true,
+    "nn/backends/pytorch.py": true
+  }
+}

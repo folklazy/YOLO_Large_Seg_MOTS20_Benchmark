@@ -1,0 +1,101 @@
+{
+  "study_id": "yolo_instance_segmentation_mots20_scaling",
+  "schema_version": "1.0",
+  "repository": "YOLO_Large_Seg_MOTS20_Benchmark",
+  "experiment": "YOLO_Large_Seg_MOTS20_Benchmark",
+  "tier": "largest",
+  "source_run_ids": [
+    "benchmark-20260929T0520Z"
+  ],
+  "source_artifact_paths": [
+    "metrics/benchmark-20260929T0520Z/per_model.csv",
+    "metrics/benchmark-20260929T0520Z/per_sequence.csv",
+    "metrics/benchmark-20260929T0520Z/preflight_maxdet.csv",
+    "metrics/benchmark-20260929T0520Z/comparison_summary.csv",
+    "timing/benchmark-20260929T0520Z/clean_repetition/summary.csv",
+    "reports/benchmark-20260929T0520Z/frozen_inputs/configs/benchmark.yaml",
+    "EXPERIMENT_PROTOCOL.md",
+    "reports/benchmark-20260929T0520Z/frozen_inputs/manifests/checkpoint_manifest.json",
+    "reports/benchmark-20260929T0520Z/frozen_inputs/manifests/dataset_manifest.json",
+    "metrics/protocol_consistency.csv",
+    "manifests/environment.json",
+    "manifests/source_manifest.json",
+    "manifests/benchmark-20260929T0520Z_full_freeze.json",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolo26x-seg/metadata.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolo26x-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolo26x-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolo26x-seg.pt.json",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolo11x-seg/metadata.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolo11x-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolo11x-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolo11x-seg.pt.json",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolov9e-seg/metadata.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolov9e-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolov9e-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolov9e-seg.pt.json",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolov8x-seg/metadata.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolov8x-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolov8x-seg.pt.json",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolov8x-seg.pt.json"
+  ],
+  "source_artifact_sha256": {
+    "metrics/benchmark-20260929T0520Z/per_model.csv": "23a1241af6bb7c53257dc7a9a98f99a03ed9d657f0d2713e5c5bf81bdd057fcc",
+    "metrics/benchmark-20260929T0520Z/per_sequence.csv": "062f2cdfd40200d953d4470e751cd2157b80f546edb8bc9e3111e3ce54f6a9e3",
+    "metrics/benchmark-20260929T0520Z/preflight_maxdet.csv": "d418bd4c6e1da0b13d465f805c875319e4bacc147e8aad9b2145da5093b1b453",
+    "metrics/benchmark-20260929T0520Z/comparison_summary.csv": "5986db7f575ed1ad21097ae51c3945cad7cc19de14fd50f26e12e53a18235d36",
+    "timing/benchmark-20260929T0520Z/clean_repetition/summary.csv": "3ad7c673d0f95a7bbf681218c6b9b77f778d0a27416bc3576cb270116ec7bf1e",
+    "reports/benchmark-20260929T0520Z/frozen_inputs/configs/benchmark.yaml": "30a3652ba9f88d020bbf2dc7857c72dbb197c92bd5dfec35665966514df95c24",
+    "EXPERIMENT_PROTOCOL.md": "465a6e60b371b29f250eeb8bb5ac4c218be20f114e9e42f7979e5d45aca19366",
+    "reports/benchmark-20260929T0520Z/frozen_inputs/manifests/checkpoint_manifest.json": "80fcdd266094b3287766d3d6e2dc2205f1e078e4fe7c881213500b74f8ff38fd",
+    "reports/benchmark-20260929T0520Z/frozen_inputs/manifests/dataset_manifest.json": "43cd08407a5511877784dfde3d112f37b7db35a855c2bcd4f6ebccd274f91170",
+    "metrics/protocol_consistency.csv": "601d5e24edaf8f766a0a38218ed9ae051d75074b9dd9477e78957671f01af522",
+    "manifests/environment.json": "2ef21e31e4cae7290c6127ed8483173a3c6bf9748c19fa00b5265fbbef546c7d",
+    "manifests/source_manifest.json": "d666e01105a38ee96647c019ba955801139eaec9e5f37cb4888e62872b102f08",
+    "manifests/benchmark-20260929T0520Z_full_freeze.json": "08a28a86d947282c5a98875a5ff212796f072ca9132ba15b9e97d7f6ef314688",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolo26x-seg/metadata.json": "38fb262beec355bed5f79ddbe811a5fbd8c3db1eb94ff6fe0d4c139a9d9d135d",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolo26x-seg.pt.json": "bf942d89f54f176c56bcfebbfc721cef4a09cbf98aab1728b3d9dd0d68008327",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolo26x-seg.pt.json": "3d4a132a97526aade0ff64d46571e2d59e4dc02269daba54a0e339205d5a2019",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolo26x-seg.pt.json": "30a8d9891b88f8ec1d67ece97306c4eb3fbecca7bf24d41883f47dd7cfec9eef",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolo11x-seg/metadata.json": "3bb6c73109b4faaeb9dbb6e3fce80cfd88f5ea8f9432909ddba3aeb9407d552f",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolo11x-seg.pt.json": "fd069ad1e2e6fc478fca5a0f4ddfd177662406f415aea0fe7fcf5767e89f873e",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolo11x-seg.pt.json": "7bef594a78015e5a4cde681266c1728ae454329cbd38434f402fe2b4a2bacf76",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolo11x-seg.pt.json": "7bf7b90fe87875c3107c8309ad4a3abe913ba764b2512f041879430ad99994f0",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolov9e-seg/metadata.json": "716a972572279e7cd12901ddde12ade590541cbfdcb23e9a3df20c5b10e37e72",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolov9e-seg.pt.json": "8a206bd2663758f845f35c7932c2c885148d957607d75cf8f0f844e050e9b7d4",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolov9e-seg.pt.json": "6c494eb29ce460e8e795c963c2f9495263abb187c601eb8cb5c0d1009632a5f8",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolov9e-seg.pt.json": "d00949305d2f8b9d1a2b7402397d4394029549a61a22bf64903949d09d89867f",
+    "predictions/benchmark-20260929T0520Z/accuracy/yolov8x-seg/metadata.json": "deb1bd86dc472dd59270bc31a3f7c9c996c8f3102f5959fcd0c26d9b29ef8c48",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round1-yolov8x-seg.pt.json": "d11b6aa1eb907ac763f6374a6bbec7ab545f49d3273ec572d0117c538098be71",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round2-yolov8x-seg.pt.json": "d38e3c909c2250d0eabbed641783fae73b2674f53e4b83c40168fff3eacd48dd",
+    "timing/benchmark-20260929T0520Z/clean_repetition/round3-yolov8x-seg.pt.json": "66dc485344f3768ca791e04cba996545fb4f9ba9194d16922556b48b3b705d6f"
+  },
+  "evaluator_hash": {
+    "reports/benchmark-20260929T0520Z/frozen_inputs/src/frozen_pilot/metrics.py": "3f39f8bed8d62677ea1f6fbdce4415e04ccaede8b0ae0425fd63f78594980721",
+    "reports/benchmark-20260929T0520Z/frozen_inputs/src/frozen_pilot/mots.py": "01e4a750d8ed6bd1d0002a7b906f351ff9d7b59d3f6e31db633cd4b463b0f51d"
+  },
+  "config_hash": "30a3652ba9f88d020bbf2dc7857c72dbb197c92bd5dfec35665966514df95c24",
+  "protocol_hash": "465a6e60b371b29f250eeb8bb5ac4c218be20f114e9e42f7979e5d45aca19366",
+  "dataset_manifest_hash": "43cd08407a5511877784dfde3d112f37b7db35a855c2bcd4f6ebccd274f91170",
+  "standardization_timestamp": "2026-10-02T05:17:42.813706+00:00",
+  "inference_rerun": false,
+  "metrics_recalculated": false,
+  "historical_documents_archived": [
+    {
+      "original": "README.md",
+      "archive": "reports/archive/README.pre-standardization-20261002.md",
+      "sha256": "e113f1026b5cd984239703c4ae59f5b746f060808a3855d2ea2b5be516b2ef2e"
+    },
+    {
+      "original": "REPORT.md",
+      "archive": "reports/archive/REPORT.pre-standardization-20261002.md",
+      "sha256": "428baadc80d184ad1a6d1341b235775bbc1b479cb01db7420a5ce2e8c97096c3"
+    }
+  ],
+  "notes": [
+    "String-preserving CSV column normalization; no accuracy or timing recomputation.",
+    "EXPERIMENT_PROTOCOL.md preserved byte-for-byte because it is frozen scientific evidence.",
+    "predictions in PER_SEQUENCE_RESULTS means predictions at fixed confidence before ignore filtering.",
+    "All timing comes from clean_repetition, never the superseded initial pass.",
+    "Original artifact locations retained. Dataset shared validation is in Master provenance/DATASET_VALIDATION.json."
+  ]
+}

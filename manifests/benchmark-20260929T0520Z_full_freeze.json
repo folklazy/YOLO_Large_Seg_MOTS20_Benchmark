@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-09-29T05:27:26.738772+00:00",
+  "config_sha256": "30a3652ba9f88d020bbf2dc7857c72dbb197c92bd5dfec35665966514df95c24",
+  "protocol_sha256": "465a6e60b371b29f250eeb8bb5ac4c218be20f114e9e42f7979e5d45aca19366",
+  "sources": {
+    "src/benchmark_adapter.py": "c13177d47f40dc59f83e5d5227d796e67c09d915c8573f169131cee39974260d",
+    "src/benchmark.py": "4c2db4ba2261f3880ce38017f21c5e0ee764d21e2dffc5aebb9310f48fce69dd",
+    "src/report.py": "91690e8e025c1d8bf9ba268b50a885e52aa3d88592651ee8492265c2760faa7e",
+    "src/validate.py": "658d5ec52a448d297d77be4d496373e3324ed84114213f0d269351ce1c9f52f7",
+    "src/frozen_pilot/mots.py": "01e4a750d8ed6bd1d0002a7b906f351ff9d7b59d3f6e31db633cd4b463b0f51d",
+    "src/frozen_pilot/visualize.py": "6188a131ae284dfce825903f3cd3b33e5aa9d6638d51c1d9a32bddf0016cffbf",
+    "src/frozen_pilot/metrics.py": "3f39f8bed8d62677ea1f6fbdce4415e04ccaede8b0ae0425fd63f78594980721",
+    "src/frozen_pilot/test_pipeline.py": "5e785fbf0619c5ad7818145ae29c436aec5bbe572f5121ff860e1838dab9a0a2",
+    "src/frozen_pilot/yolo_adapter.py": "d739c5477490b805773e1320e744052152dd1acc9e03719fed4a588ed7b2a36f"
+  },
+  "timing_order": [
+    [
+      "yolo26x-seg.pt",
+      "yolo11x-seg.pt",
+      "yolov8x-seg.pt",
+      "yolov9e-seg.pt"
+    ],
+    [
+      "yolo11x-seg.pt",
+      "yolov8x-seg.pt",
+      "yolov9e-seg.pt",
+      "yolo26x-seg.pt"
+    ],
+    [
+      "yolov8x-seg.pt",
+      "yolov9e-seg.pt",
+      "yolo26x-seg.pt",
+      "yolo11x-seg.pt"
+    ]
+  ],
+  "seed": 20260929,
+  "frame_list_sha256": "3bdd87baddcbae32c7ed9ad7ec01bad613d0e0b837b84c4a3fe45eb1dc3b2d78",
+  "sample_hashes": {
+    "preflight_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+    "timing_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+    "visualization_frames.json": "b64d28af8312c544f9aff083dccc9fb4a9ca7e28d8a43617388869a38f5b60c6"
+  }
+}
