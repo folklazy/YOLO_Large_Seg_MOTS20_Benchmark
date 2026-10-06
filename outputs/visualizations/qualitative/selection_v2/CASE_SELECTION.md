@@ -1,26 +1,26 @@
-# Large — qualitative case selection v2
+# เหตุผลเลือกกรณี Largest (X/E) — ชุดที่ 2
 
-คัดจาก 12 frozen visualization frames โดยตรวจ per-frame metrics, original/GT และ saved RLE ที่ confidence ≥0.25 / mask matching IoU ≥0.50 ตาม evaluator/ignore policy เดิม ไม่รัน inference
+คัดจาก 12 เฟรมใน manifest ภาพประกอบที่ตรึง โดยตรวจรายเฟรมตัวชี้วัด, ต้นฉบับ/GT และ saved RLE ที่ confidence ≥0.25 / เกณฑ์จับคู่ mask IoU ≥0.50 ตาม evaluator/ignore policy เดิม ไม่รัน inference
 
-1 shared anchor + 3 cases ตามพฤติกรรมของ tier ไม่บังคับภาพทั้งหมดตรงกันระหว่าง tier; ภายใน case ใช้เฟรมเต็มเดียวกันทุกโมเดล ROI เป็นภาพเสริม ไม่ซ่อน full-frame errors
+1 กรณีร่วม + 3 กรณีตามพฤติกรรมของขนาดไม่บังคับภาพทั้งหมดตรงกันระหว่างขนาด; ภายในกรณีใช้เฟรมเต็มเดียวกันทุกโมเดล ROI เป็นภาพเสริม ไม่ซ่อนข้อผิดพลาดเต็มเฟรม
 
-| Case | Sequence / frame | Why selected / decision use | Source comparison |
-|---|---|---|---|
-| 1 | MOTS20-09 / 000525 | tier diagnostic: additional GT and fewer unmatched outputs; ใช้พิจารณา coverage ร่วมกับ extra masks: YOLO26x เก็บ 2003 โดยไม่มี FP แต่ YOLOv9e เก็บ 2004 ที่ YOLO26x พลาด แม้ทั้งคู่มี TP 7 เท่ากัน | new composite from saved predictions |
-| 2 | MOTS20-09 / 000263 | shared anchor: common failure; ใช้ตั้งข้อจำกัดเมื่อความครบถ้วนของ Person ที่อยู่ระหว่างคนอื่นสำคัญ และตรวจการแยก instance ก่อนคัดโมเดล; ทุกโมเดลยังมีข้อผิดพลาด | reuse existing image |
-| 3 | MOTS20-02 / 000600 | counterexample and near-tied pair; ช่วยตรวจคู่ near-tied YOLO11x/YOLOv9e: YOLO11x match 2029 ได้ แต่ YOLOv9e ไม่ได้; YOLOv8x เก็บครบแต่มี extra mask ริมขวา | reuse existing image |
-| 4 | MOTS20-11 / 000450 | near-tied pair: same valid GT, different extra outputs; ใช้เทียบ YOLO11x/YOLOv9e ที่ mAP แทบเท่ากัน: ทั้งคู่เก็บ valid GT ครบ แต่ YOLOv9e มี FP สอง mask ขณะที่ YOLO11x ไม่มีในเฟรมนี้ | new composite from saved predictions |
+| กรณี | ลำดับภาพ / เฟรม | เหตุผลที่เลือกและการใช้งาน | แหล่งภาพเปรียบเทียบ |
+| --- | --- | --- | --- |
+| 1 | MOTS20-09 / 000525 | กรณีแยกพฤติกรรมของขนาดนี้: เก็บ GT เพิ่มและลด prediction ที่ไม่มีคู่; ใช้พิจารณา ความครบถ้วน ร่วมกับ mask ส่วนเกิน: YOLO26x เก็บ 2003 โดยไม่มี FP แต่ YOLOv9e เก็บ 2004 ที่ YOLO26x พลาด แม้ทั้งคู่มี TP 7 เท่ากัน | สร้างภาพจาก prediction ที่บันทึกไว้ |
+| 2 | MOTS20-09 / 000263 | กรณีร่วม: ข้อผิดพลาดร่วม; ใช้ตั้งข้อจำกัดเมื่อความครบถ้วนของ Person ที่อยู่ระหว่างคนอื่นสำคัญ และตรวจการแยก instance ก่อนคัดโมเดล; ทุกโมเดลยังมีข้อผิดพลาด | ใช้ภาพเดิม |
+| 3 | MOTS20-02 / 000600 | กรณีสวนอันดับ และ คู่คะแนนใกล้กัน; ช่วยตรวจคู่ คะแนนใกล้กัน YOLO11x/YOLOv9e: YOLO11x จับคู่ 2029 ได้ แต่ YOLOv9e ไม่ได้; YOLOv8x เก็บครบแต่มี mask ส่วนเกิน ริมขวา | ใช้ภาพเดิม |
+| 4 | MOTS20-11 / 000450 | คู่คะแนนใกล้กัน: GT ที่เก็บได้เหมือนกัน แต่ผลลัพธ์ส่วนเกินต่างกัน; ใช้เทียบ YOLO11x/YOLOv9e ที่ mAP แทบเท่ากัน: ทั้งคู่เก็บ valid GT ครบ แต่ YOLOv9e มี FP สอง mask ขณะที่ YOLO11x ไม่มีในเฟรมนี้ | สร้างภาพจาก prediction ที่บันทึกไว้ |
 
-## ทำไมบางภาพยังตรงกับ tier อื่น
+## ทำไมบางภาพยังตรงกับ ขนาดอื่น
 
-Case 2 (09/263) ใช้ร่วมเพื่อเทียบ FN/FP บน GT ชุดเดียวกัน กรณีอื่นซ้ำได้เมื่อ error เดียวกันช่วยตรวจคนละโมเดล: 05/419 ใช้ L/M ตรวจ GT 2002; 02/1 ใช้ L/M ตรวจ equal counts และ GT ต่างชุด; 02/600 ใช้ Largest/Small ตรวจกรณีสวนอันดับ; 02/300 ใช้ Small/Nano ตรวจ TP–FP trade-off; 11/1 ใช้ L/N แต่ L ตรวจ GT 2016 ส่วน N ตรวจ GT 2028 และ extra mask; 11/450 ใช้ Largest/Medium ตรวจ coverage เท่ากันกับ extra output ของคนละชุดโมเดล ไม่ใช้จำนวนภาพซ้ำเป็นหลักฐานอิสระเพิ่ม
+กรณี 2 (09/263) ใช้ร่วมเพื่อเทียบ FN/FP บน GT ชุดเดียวกันกรณีอื่นซ้ำได้เมื่อข้อผิดพลาดเดียวกันช่วยตรวจคนละโมเดล: 05/419 ใช้ L/M ตรวจ GT 2002; 02/1 ใช้ L/M ตรวจจำนวนเท่ากันและ GT ต่างชุด; 02/600 ใช้ Largest/Small ตรวจกรณีสวนอันดับ; 02/300 ใช้ Small/Nano ตรวจ TP–FP ข้อแลกเปลี่ยน; 11/1 ใช้ L/N แต่ L ตรวจ GT 2016 ส่วน N ตรวจ GT 2028 และ mask ส่วนเกิน; 11/450 ใช้ Largest/Medium ตรวจความครบถ้วนเท่ากันกับผลลัพธ์ส่วนเกินของคนละชุดโมเดล ไม่ใช้จำนวนภาพซ้ำเป็นหลักฐานอิสระเพิ่ม
 
-## การแทน case เดิม
+## การแทนกรณีเดิม
 
-เดิม Case 1 (05/419) แยก YOLOv8x ได้ แต่ไม่แยก YOLO26x/YOLO11x/YOLOv9e เท่ากรณีใหม่; เดิม Case 4 (09/1) TP 6 / FP 0 / FN 0 ทุกโมเดล จึงแทนด้วย coverage-control ที่มี extra output ต่างกัน ภาพ/หลักฐานเก่ายังคงเดิมเพื่อ audit; presentation เก่าเก็บใน reports/archive
+เดิมกรณี 1 (05/419) แยก YOLOv8x ได้ แต่ไม่แยก YOLO26x/YOLO11x/YOLOv9e เท่ากรณีใหม่; เดิมกรณี 4 (09/1) TP 6 / FP 0 / FN 0 ทุกโมเดล จึงแทนด้วยความครบถ้วน-ภาพควบคุมที่มีผลลัพธ์ส่วนเกินต่างกัน ภาพ/หลักฐานเก่ายังคงเดิมเพื่อตรวจย้อนหลัง; การวิเคราะห์ภาพเก่าเก็บใน reports/archive
 
 ## ขอบเขต
 
-ทั้งห้า tier มี 20 case slots แต่ใช้ original frames ต่างกัน 10 เฟรม (เดิม 6) ชุดใหม่มี MOTS20-11 และยังมี common failure / counterexample ไม่เลือกเฉพาะ frame ที่ accuracy leader ชนะ ทั้งนี้ pool 12 เฟรมไม่แทน dataset; ไม่อ้างว่าเป็นเฟรมที่ต่างที่สุดใน 2,862 เฟรม ไม่ใช้ภาพวัด latency/VRAM หรือ statistical significance
+ทั้งห้าขนาดมี 20 ตำแหน่งกรณีแต่ใช้เฟรมต้นฉบับต่างกัน 10 เฟรม (เดิม 6) ชุดใหม่มี MOTS20-11 และยังมีข้อผิดพลาดร่วม / กรณีสวนอันดับไม่เลือกเฉพาะเฟรมที่โมเดลนำด้านความแม่นยำชนะ ทั้งนี้ pool 12 เฟรมไม่แทนชุดข้อมูล; ไม่อ้างว่าเป็นเฟรมที่ต่างที่สุดใน 2,862 เฟรมไม่ใช้ภาพวัดเวลาแฝง/VRAM หรือนัยสำคัญทางสถิติ
 
-[Candidate pool](CANDIDATE_POOL.json) · [Case evidence](CASE_EVIDENCE.json) · [Focus evidence](FOCUS_EVIDENCE.json) · [Decision audit](CASE_DECISION_AUDIT.json) · [Active selection](../../../../manifests/QUALITATIVE_SELECTION.json)
+[ชุดเฟรมที่คัดจาก](CANDIDATE_POOL.json) · [หลักฐานรายกรณี](CASE_EVIDENCE.json) · [หลักฐานภาพขยาย](FOCUS_EVIDENCE.json) · [หลักฐานใช้เลือกโมเดล](CASE_DECISION_AUDIT.json) · [ชุดหลักฐานปัจจุบัน](../../../../manifests/QUALITATIVE_SELECTION.json)
