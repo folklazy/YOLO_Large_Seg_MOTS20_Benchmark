@@ -1,103 +1,94 @@
-# Largest (X/E) การทดสอบ YOLO Instance Segmentation — MOTS20
+# Largest (X/E) YOLO Segmentation Benchmark — MOTS20
 
-## 1. สถานะการทดลอง
+## 1. Experiment Status
 
 PASS WITH WARNINGS
 
-- โมเดลที่เสร็จแล้ว: 4/4
-- จำนวนเฟรม: 2,862 ต่อโมเดล; Person GT รายเฟรม: 26,894 instances
-- รหัสรอบทดลอง: `benchmark-20260929T0520Z`
+- Models completed: 4/4
+- Frames: 2,862 per model; Person GT instances: 26,894
+- Run ID: `benchmark-20260929T0520Z`
 
-## 2. โมเดลที่ทดสอบ
+## 2. Models Tested
 
-| ตระกูล | โมเดล | จำนวนพารามิเตอร์ | GFLOPs | Checkpoint (MB) |
+| Family | Model | Parameters | GFLOPs | Checkpoint MB |
 | --- | --- | --- | --- | --- |
 | YOLO26 | YOLO26x-Seg | 70,693,800 | 338.203 | 142.13 |
 | YOLO11 | YOLO11x-Seg | 62,142,656 | 297.892 | 125.09 |
 | YOLOv9 | YOLOv9e-Seg | 60,512,800 | 238.333 | 122.21 |
 | YOLOv8 | YOLOv8x-Seg | 71,827,888 | 329.189 | 144.10 |
 
-## 3. ความสอดคล้องกับโพรโทคอล
 
-| รายการ | สถานะ |
+## 3. Protocol Compatibility
+
+| Item | Status |
 |---|---|
-| ข้อมูล | PASS |
-| ตัวประเมิน | PASS |
-| การเตรียมภาพ | PASS |
-| ขนาดภาพเข้าโมเดล | PASS |
-| ความละเอียดเชิงตัวเลข | PASS |
-| ค่าเกณฑ์ | PASS |
+| Dataset | PASS |
+| Evaluator | PASS |
+| Preprocessing | PASS |
+| Input size | PASS |
+| Precision | PASS |
+| Thresholds | PASS |
 | maxDet | PASS |
-| วิธีวัดเวลา | PASS |
-| สภาพแวดล้อม | PASS |
+| Timing protocol | PASS |
+| Environment | PASS |
 
-ความสอดคล้องของข้อมูล: PASS
+Dataset compatibility: PASS
 
-ความสอดคล้องของการเตรียมภาพ: PASS
+Preprocessing compatibility: PASS
 
-[วิธีทดลองร่วม](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study/blob/main/METHODOLOGY_REFERENCE.md) · [โพรโทคอลการทดลอง](EXPERIMENT_PROTOCOL.md) · [หลักฐานการกำหนดมาตรฐาน](manifests/STANDARDIZATION.json)
+Historical environment and frozen evidence verified; shared methodology: [Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study).
 
-## 4. ผลลัพธ์รวม
+## 4. Overall Results
 
-| โมเดล | Mask mAP50-95 | AP50 | AP75 | Precision | Recall | F1 | TP-only IoU | TP-only Dice | Inference (ms) | Pipeline (ms) | FPS | Peak allocated VRAM (MiB) | จำนวนพารามิเตอร์ | GFLOPs | Checkpoint (MB) |
+| Model | Mask mAP50-95 | AP50 | AP75 | Precision | Recall | F1 | TP-only IoU | TP-only Dice | Inference ms | Pipeline ms | FPS | Peak VRAM MiB | Params | GFLOPs | Checkpoint MB |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | YOLO26x-Seg | 0.603730 | 0.903687 | 0.664426 | 0.946008 | 0.846285 | 0.893372 | 0.828873 | 0.902919 | 72.458 | 109.639 | 9.121 | 952.18 | 70,693,800 | 338.203 | 142.13 |
 | YOLO11x-Seg | 0.536674 | 0.875806 | 0.575845 | 0.938702 | 0.822228 | 0.876613 | 0.801385 | 0.886046 | 69.406 | 105.885 | 9.444 | 942.48 | 62,142,656 | 297.892 | 125.09 |
 | YOLOv9e-Seg | 0.536642 | 0.882037 | 0.572100 | 0.934230 | 0.826578 | 0.877113 | 0.799298 | 0.884605 | 65.888 | 103.376 | 9.673 | 855.41 | 60,512,800 | 238.333 | 122.21 |
 | YOLOv8x-Seg | 0.524758 | 0.866402 | 0.560452 | 0.921598 | 0.814271 | 0.864616 | 0.798136 | 0.883841 | 67.843 | 109.441 | 9.137 | 1001.13 | 71,827,888 | 329.189 | 144.10 |
 
-## 5. ผู้ชนะในแต่ละด้าน
 
-| ด้าน | โมเดล | ผลลัพธ์ |
-| --- | --- | --- |
-| Mask mAP50-95 สูงสุด | YOLO26x-Seg | 0.603730 |
-| AP75 สูงสุด | YOLO26x-Seg | 0.664426 |
-| Recall สูงสุด | YOLO26x-Seg | 0.846285 |
-| Inference เร็วสุด | YOLOv9e-Seg | 65.888 |
-| Pipeline เร็วสุด | YOLOv9e-Seg | 103.376 |
-| FPS สูงสุด | YOLOv9e-Seg | 9.673 |
-| VRAM ต่ำสุด | YOLOv9e-Seg | 855.41 |
+## 5. Tier Winners
 
-## 6. ข้อค้นพบสำคัญ
+| Category | Model | Value |
+|---|---|---|
+| Highest Mask mAP50-95 | YOLO26x-Seg | 0.603730 |
+| Highest AP75 | YOLO26x-Seg | 0.664426 |
+| Highest Recall | YOLO26x-Seg | 0.846285 |
+| Fastest inference | YOLOv9e-Seg | 65.888 |
+| Fastest pipeline | YOLOv9e-Seg | 103.376 |
+| Highest FPS | YOLOv9e-Seg | 9.673 |
+| Lowest VRAM | YOLOv9e-Seg | 855.41 |
 
-- ข้อสังเกต: YOLO26x-Seg มี Mask mAP50-95 สูงสุด 0.603730; ห่างอันดับถัดไป 0.067056 บนสเกล 0–1
-- ข้อสังเกต: YOLO26x-Seg นำ AP75; YOLO26x-Seg นำ Recall
-- ข้อสังเกต: YOLOv9e-Seg มี inference เร็วสุด; YOLOv9e-Seg มี pipeline เร็วสุดและ FPS สูงสุด; YOLOv9e-Seg มี VRAM ต่ำสุด
-- คู่ mAP ใกล้ที่สุด: YOLO11x-Seg / YOLOv9e-Seg ต่าง 0.000032; เป็นความใกล้เชิงพรรณนา ไม่ใช่ผลทดสอบนัยสำคัญทางสถิติ
-- การตีความ: แยกความแม่นยำความครบถ้วนเวลา forward เวลา pipeline และหน่วยความจำไม่มีคะแนนรวมถ่วงน้ำหนักจำนวนพารามิเตอร์หรือ GFLOPs ไม่กำหนดอันดับเวลา/VRAM โดยตรง
 
-## 7. ข้อสังเกตรายลำดับภาพ
+## 6. Key Findings
 
-- YOLO26x-Seg: Mask mAP50-95 สูงสุดที่ MOTS20-11 (0.656433); ต่ำสุดที่ MOTS20-02 (0.486317)
-- YOLO11x-Seg: Mask mAP50-95 สูงสุดที่ MOTS20-05 (0.604070); ต่ำสุดที่ MOTS20-02 (0.416815)
-- YOLOv9e-Seg: Mask mAP50-95 สูงสุดที่ MOTS20-05 (0.602120); ต่ำสุดที่ MOTS20-02 (0.422845)
-- YOLOv8x-Seg: Mask mAP50-95 สูงสุดที่ MOTS20-05 (0.586309); ต่ำสุดที่ MOTS20-02 (0.410787)
-- ลำดับ mAP ที่ต่างจากผลรวม: MOTS20-02: YOLO26x-Seg > YOLOv9e-Seg > YOLO11x-Seg > YOLOv8x-Seg
+- Observed highest Mask mAP50-95: YOLO26x-Seg (0.603730).
+- Lowest inference mean: YOLOv9e-Seg; lowest pipeline mean: YOLOv9e-Seg. These are distinct measurements.
+- Lowest allocated VRAM: YOLOv9e-Seg (855.41 MiB).
+- Interpretation: choose by measured accuracy, latency and memory constraints; no weighted score or architecture-causality claim.
+- YOLO11x-Seg and YOLOv9e-Seg have descriptively near-tied Mask mAP50-95; the tiny difference is not evidence of statistical superiority.
 
-AP รวมคำนวณจากข้อมูลทั้งหมด ไม่ใช่ค่าเฉลี่ย AP รายลำดับภาพ ดูค่าครบใน [PER_SEQUENCE_RESULTS.csv](metrics/PER_SEQUENCE_RESULTS.csv)
+## 7. Per-sequence Observations
 
-## 8. ประสิทธิภาพและการใช้ทรัพยากร
+- YOLO26x-Seg: strongest MOTS20-11 (0.656433); weakest MOTS20-02 (0.486317) by sequence Mask mAP50-95.
+- YOLO11x-Seg: strongest MOTS20-05 (0.604070); weakest MOTS20-02 (0.416815) by sequence Mask mAP50-95.
+- YOLOv9e-Seg: strongest MOTS20-05 (0.602120); weakest MOTS20-02 (0.422845) by sequence Mask mAP50-95.
+- YOLOv8x-Seg: strongest MOTS20-05 (0.586309); weakest MOTS20-02 (0.410787) by sequence Mask mAP50-95.
 
-- คู่ที่ใกล้ที่สุดด้านค่าเฉลี่ย inference: YOLO11x-Seg / YOLOv8x-Seg ต่าง 1.563 ms; ไม่ได้ทดสอบนัยสำคัญทางสถิติ
-- คู่ที่ใกล้ที่สุดด้านค่าเฉลี่ย pipeline: YOLO26x-Seg / YOLOv8x-Seg ต่าง 0.197 ms; ไม่ได้ทดสอบนัยสำคัญทางสถิติ
+## 8. Efficiency and Resource Observations
 
-YOLOv9e-Seg ใช้ peak allocated VRAM ต่ำสุดจำนวนพารามิเตอร์ก่อน/หลัง fusion, GFLOPs และเวลาโหลดแยกเก็บใน [MODEL_COMPLEXITY.csv](metrics/MODEL_COMPLEXITY.csv) ส่วน peak reserved VRAM อยู่ใน [แหล่งวัดเวลา](timing/benchmark-20260929T0520Z/clean_repetition/summary.csv) เวลาเตรียม RLE แยก: yolo26x-seg.pt: 205.007 ms; yolo11x-seg.pt: 195.782 ms; yolov9e-seg.pt: 215.136 ms; yolov8x-seg.pt: 232.719 ms.
+YOLOv9e-Seg has the lowest measured inference mean; YOLOv9e-Seg has the lowest pipeline mean and highest mean-derived FPS. YOLOv9e-Seg has the lowest allocator peak. Loaded parameters and NMS-path GFLOPs are in the table; fused runtime counts and separate loading times are in MODEL_COMPLEXITY.csv. Parameter counts do not imply proportional VRAM or latency.
 
-ใช้ 3 รอบที่ไม่ถูกรบกวนต่อโมเดล รอบละ 100 เฟรมหลัง 10 warmups และ synchronize CUDA ตามขอบเขต stage ค่า pipeline รวม preprocessing, inference และ postprocessing ไม่รวมการเตรียม RLE และการอ่านเขียนดิสก์ FPS จึงไม่ใช่อัตราการบันทึก mask ครบกระบวนการและไม่บวก Ultralytics-inclusive diagnostic ซ้ำ
+## 9. Warnings and Anomalies
 
-ค่าเฉลี่ย postprocessing: YOLO26x-Seg: 35.464 ms; YOLO11x-Seg: 34.797 ms; YOLOv9e-Seg: 35.790 ms; YOLOv8x-Seg: 39.887 ms
+Historical PASS WITH WARNINGS retained: CPU NNPACK warnings during complexity inspection and pycocotools/NumPy deprecation warnings. Historical regression checks passed; no dependency changes were made. Pipeline excludes RLE preparation and disk I/O, so FPS is not end-to-end saved-mask throughput. The original Largest timing pass was excluded in its entirety for non-idle starts; all primary measurements use three clean historical repetitions.
 
-## 9. คำเตือนและข้อสังเกตผิดปกติ
+## 10. Limitations
 
-เก็บสถานะ PASS WITH WARNINGS จากรอบเดิม: พบคำเตือน CPU NNPACK ระหว่างตรวจความซับซ้อนโมเดลและคำเตือนเลิกใช้ของ pycocotools/NumPy การตรวจ regression เดิมผ่านและไม่เปลี่ยน package เพื่อซ่อนคำเตือน การวัดเวลารอบแรกของ Largest ถูกตัดออกทั้งชุดเพราะเริ่มเมื่อ GPU ไม่ว่าง ผลหลักใช้ 3 clean repetitions เดิมเท่านั้น
+ผลนี้เป็น Person instance segmentation รายเฟรมบน MOTS20 ไม่ใช่ MOTS tracking; TP-only IoU/Dice พิจารณาเฉพาะคู่ที่ match ได้ ภาพวิดีโอต่อเนื่องสัมพันธ์กันและไม่ได้ทดสอบ statistical significance ค่าใกล้กันควรอ่านว่า near-tied descriptively รุ่น E/X และ C/L ไม่ใช่ capacity เท่ากัน ผลยังไม่ยืนยัน blur, low-light, มุมกล้อง, ระดับ occlusion หรือความพร้อมใช้งาน CCTV; เป็น candidate for later CCTV robustness evaluation เท่านั้น
 
-Pipeline ไม่รวมการเตรียม RLE และการอ่านเขียนดิสก์จึงไม่ใช่เวลา/อัตราประมวลผลครบกระบวนการสำหรับการบันทึก mask หรือระบบ CCTV การปรับเอกสารครั้งนี้ไม่รัน inference ใหม่และไม่เปลี่ยนค่าที่วัด
-
-## 10. ข้อจำกัด
-
-ผลนี้เป็น Person instance segmentation รายเฟรมบน MOTS20 ไม่ใช่ MOTS tracking; TP-only IoU/Dice พิจารณาเฉพาะคู่ที่ จับคู่ ได้ ภาพวิดีโอต่อเนื่องสัมพันธ์กันและไม่ได้ทดสอบนัยสำคัญทางสถิติค่าใกล้กันควรอ่านว่าใกล้กันเชิงพรรณนารุ่น E/X และ C/L ไม่ใช่ capacity เท่ากัน ผลยังไม่ยืนยันภาพพร่า, แสงน้อย, มุมกล้อง, ระดับ occlusion หรือความพร้อมใช้งาน CCTV; เป็นตัวเลือกสำหรับการทดสอบต่อการประเมินความทนทานต่อ CCTV เท่านั้น
-
-## 11. หลักฐานสำหรับตรวจสอบซ้ำ
+## 11. Reproducibility and Source Artifacts
 
 - [TIER_RESULTS.csv](metrics/TIER_RESULTS.csv)
 - [PER_SEQUENCE_RESULTS.csv](metrics/PER_SEQUENCE_RESULTS.csv)
@@ -105,14 +96,16 @@ Pipeline ไม่รวมการเตรียม RLE และการอ
 - [MODEL_COMPLEXITY.csv](metrics/MODEL_COMPLEXITY.csv)
 - [PREFLIGHT_MAXDET.csv](metrics/PREFLIGHT_MAXDET.csv)
 
-[แหล่งที่มาและค่า hash](manifests/STANDARDIZATION.json) · [โพรโทคอล](EXPERIMENT_PROTOCOL.md) · [รายการกราฟ](outputs/plots/INDEX.md) · [บันทึกย้อนหลัง](reports/archive/)
+[Standardization provenance](manifests/STANDARDIZATION.json) · [Frozen protocol](EXPERIMENT_PROTOCOL.md) · [Historical reports](reports/archive/)
 
-prediction แบบ RLE ที่ไม่สูญเสียข้อมูลและบันทึกการวัดเวลาละเอียดเก็บในเครื่องตามรหัสรอบทดลอง หลักฐานต้นทางคงเดิม; การปรับภาษานี้ไม่คำนวณค่าตัวชี้วัดใหม่และไม่รัน inference
+[Canonical plots](outputs/plots/INDEX.md).
 
-## 12. ความเชื่อมโยงกับการศึกษาทุกขนาด
+## 12. Relation to Full Scaling Study
 
-[การศึกษาหลัก](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study) — รายงานนี้กล่าวถึงขนาด Largest (X/E) เท่านั้นผลรวม 17 โมเดลยังรอคำสั่งจากผู้ใช้ แม้การทดลองทั้งห้าขนาดเสร็จแล้ว การปรับเอกสารไม่เริ่ม benchmark หรือการสังเคราะห์ผลใหม่
+[Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study) — this is one tier only. The 17-model synthesis remains gated on all five tiers and explicit authorization.
 
-## การวิเคราะห์เชิงคุณภาพ
+## Qualitative Analysis
 
-ภาพเปรียบเทียบเฟรมเดียวกัน 4 กรณีจาก prediction ที่บันทึกไว้ พร้อมข้อผิดพลาดที่พบและการตีความ อยู่ใน [PRESENTATION_SUMMARY_TH.md](PRESENTATION_SUMMARY_TH.md) ดู [เหตุผลเลือกกรณีปัจจุบัน](outputs/visualizations/qualitative/selection_v2/CASE_SELECTION.md) และ [ตัวชี้ชุดหลักฐาน](manifests/QUALITATIVE_SELECTION.json) รายงานเทคนิคนี้เชื่อมไปยังการวิเคราะห์ภาพเพื่อไม่เล่าเนื้อหาซ้ำ
+Same-frame visual evidence, observed failures and interpretation are in
+[PRESENTATION_SUMMARY_TH.md](PRESENTATION_SUMMARY_TH.md).
+Comparisons reuse saved RLE predictions and original MOTS20 frames; no inference rerun or benchmark value changes.
