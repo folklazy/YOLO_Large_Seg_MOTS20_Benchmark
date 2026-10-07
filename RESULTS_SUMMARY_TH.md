@@ -3,12 +3,13 @@
 ## สรุปใน 1 นาที
 
 - โมเดล: YOLO26x-Seg, YOLO11x-Seg, YOLOv9e-Seg, YOLOv8x-Seg
-- MOTS20 2,862 frames / 26,894 Person GT instances (annotation รายเฟรม)
-- Official pretrained checkpoints / no fine-tuning; สถานะเดิม PASS WITH WARNINGS
+- MOTS20 2,862 frames / 26,894 Person GT instances รายเฟรม
+- Official pretrained checkpoints; ไม่มี training หรือ fine-tuning; สถานะ PASS WITH WARNINGS
 - Accuracy สูงสุด: YOLO26x-Seg — Mask mAP50-95 0.603730
-- เร็วสุด: inference YOLOv9e-Seg (65.888 ms); pipeline YOLOv9e-Seg (103.376 ms)
+- Inference เร็วสุด: YOLOv9e-Seg — 65.888 ms
+- Pipeline เร็วสุด: YOLOv9e-Seg — 103.376 ms / 9.673 FPS
 - Peak allocated VRAM ต่ำสุด: YOLOv9e-Seg — 855.41 MiB
-- Trade-off หลัก: YOLO26x-Seg นำรองอันดับสอง 6.705603 percentage points ของ mAP; เวลา inference มากกว่าตัวเร็วสุด 6.570 ms
+- Trade-off หลัก: ตัวนำ mAP สูงกว่ารองอันดับสอง 6.706 percentage points; ต้องแยก forward จาก pipeline
 
 ## ผลลัพธ์หลัก
 
@@ -19,33 +20,7 @@
 | YOLOv9e-Seg | 0.536642 | 0.572100 | 0.826578 | 65.888 | 103.376 | 9.673 | 855.41 |
 | YOLOv8x-Seg | 0.524758 | 0.560452 | 0.814271 | 67.843 | 109.441 | 9.137 | 1001.13 |
 
-## สรุปผลจากตาราง
-
-อ่านร่วมกับตารางหลักด้านบน; AP50 และ TP-only IoU/Dice อ้างอิง [canonical CSV](metrics/TIER_RESULTS.csv) และ [REPORT.md](REPORT.md) ตัวเลข TP-only วัดเฉพาะคู่ที่ match ได้ จึงไม่แทนความครอบคลุม GT หรือคุณภาพทุก instance
-
-### YOLO26x-Seg
-
-นำทั้ง AP50, AP75, mAP50-95 และ Recall รวมถึง TP-only IoU/Dice จึงมีหลักฐานหลายด้านว่าครอบคลุม GT ได้มากกว่าและมี mask overlap เฉลี่ยสูงกว่าในชุดนี้ Recall 84.63% ยังเหลือ GT ที่พลาดหรือจับคู่ไม่ผ่าน; ส่วน TP-only quality ไม่ครอบคลุมคนที่พลาดและไม่ได้เปรียบเทียบคู่ GT ชุดเดียวกันระหว่างโมเดล
-
-สิ่งที่แลกคือ inference 72.458 ms ซึ่งช้าที่สุดในกลุ่ม และ allocated VRAM 952.18 MiB สูงกว่า YOLOv9e แต่ไม่สูงสุด หากยอมรับ latency เพิ่มเพื่อ accuracy รุ่นนี้เป็น candidate นำไปทดลองต่อ โดยต้องพิจารณา pipeline 109.639 ms ด้วย
-
-### YOLO11x-Seg
-
-mAP แทบเท่า YOLOv9e แต่ AP75 และ TP-only IoU/Dice สูงกว่าเล็กน้อย ขณะที่ Recall ต่ำกว่าและทั้ง inference/pipeline ช้ากว่า จึงไม่ควรเรียกว่า “สมดุลดีที่สุด” โดยอัตโนมัติ ความต่าง mAP ระดับทศนิยมท้ายไม่ใช่หลักฐาน statistical superiority
-
-เป็นคู่เปรียบเทียบที่มีประโยชน์เมื่อต้องการแยกคุณภาพ mask ของคู่ที่ match ได้ออกจากความครอบคลุม GT; การเลือกเหนือ YOLOv9e ต้องมีเหตุผลจากข้อจำกัดงานหรือข้อมูลเพิ่มเติม เพราะรอบนี้ใช้ VRAM 942.48 MiB มากกว่าและยังไม่มีการทดสอบความมีนัยสำคัญ
-
-### YOLOv9e-Seg
-
-เด่นด้านทรัพยากร: inference 65.888 ms และ pipeline 103.376 ms เร็วสุด พร้อม peak allocated VRAM 855.41 MiB ต่ำสุด โดย mAP แทบเท่า YOLO11x จึงไม่ได้ลด mAP มากเมื่อเทียบคู่นี้ อีกทั้ง Recall สูงกว่า YOLO11x เล็กน้อย แต่ AP75 และ TP-only quality ต่ำกว่าเล็กน้อย
-
-อย่างไรก็ตาม mAP/AP75 ยังต่ำกว่า YOLO26x ตามค่าที่วัด เหมาะเป็น candidate เมื่อ latency/VRAM เป็นข้อจำกัดหลัก โดยไม่ถือว่าเป็นผู้ชนะด้าน accuracy หรือทุกด้านพร้อมกัน
-
-### YOLOv8x-Seg
-
-mAP ต่ำสุดและ allocated VRAM 1001.13 MiB สูงสุดในสี่รุ่น แม้ inference 67.843 ms เร็วกว่า YOLO11x และ YOLO26x แต่ pipeline 109.441 ms อยู่ใกล้ YOLO26x และช้ากว่า YOLOv9e จึงไม่ควรใช้ forward latency เพียงค่าเดียวเป็นเหตุผลเลือก
-
-จากค่าที่วัด YOLOv9e มี mAP สูงกว่า พร้อม inference/pipeline เร็วกว่าและใช้ VRAM ต่ำกว่า จึงเป็นคู่ที่ควรพิจารณาก่อนภายใต้ข้อจำกัดเหล่านี้ ส่วน YOLOv8x ยังใช้เป็น baseline รุ่นก่อนเพื่อทดลองต่อได้ ผลนี้ไม่พิสูจน์สาเหตุจาก architecture เพราะ capacity/checkpoint/pretraining ต่างกัน
+AP/Recall เป็น fraction ช่วง 0–1; latency เป็น ms/frame และ FPS มาจาก mean pipeline
 
 ## Winner ของแต่ละด้าน
 
@@ -60,34 +35,34 @@ mAP ต่ำสุดและ allocated VRAM 1001.13 MiB สูงสุดใ
 
 ## สิ่งที่ตัวเลขบอกเรา
 
-- mAP ของ YOLO26x-Seg สูงกว่า YOLO11x-Seg 6.705603 percentage points
-- YOLO11x และ YOLOv9e มี mAP ต่างกันเพียง 0.000032 (0.003190 percentage points); เป็น descriptive near tie
-- YOLOv8x มี peak VRAM สูงสุด 1001.13 MiB แต่ mAP ต่ำสุดใน tier
-- Accuracy winner ใช้ VRAM มากกว่าตัวต่ำสุด 96.78 MiB; การจัดอันดับ inference และ pipeline ต้องแยกกัน
+- YOLO26x-Seg นำ YOLO11x-Seg ด้าน mAP 6.706 percentage points
+- YOLO11x/YOLOv9e เป็น descriptive near tie ของ mAP; AP75 นำใน YOLO11x แต่ Recall และทรัพยากรนำใน YOLOv9e
+- YOLOv8x forward เร็วกว่า YOLO26x แต่ pipeline ใกล้กัน และใช้ VRAM มากกว่า
+- YOLO11x-Seg/YOLOv9e-Seg: ต่าง 0.003190 percentage points; near tie ไม่ใช่ equivalence หรือ statistical significance
+
+## บทบาทของแต่ละโมเดล
+
+| Model | จุดเด่น | สิ่งที่แลก | เหมาะพิจารณาเมื่อ |
+|---|---|---|---|
+| YOLO26x-Seg | นำ mAP/AP75/Recall และ TP-only quality | Inference ช้าที่สุด; VRAM สูงกว่า YOLOv9e | ยอมเพิ่ม latency เพื่อ accuracy |
+| YOLO11x-Seg | mAP near-tied กับ YOLOv9e; AP75 สูงกว่าเล็กน้อย | Recall ต่ำกว่าและ latency/VRAM สูงกว่า YOLOv9e | ตรวจ trade-off ของ mask overlap กับ coverage |
+| YOLOv9e-Seg | Inference/pipeline เร็วสุด; VRAM ต่ำสุด | mAP/AP75 ต่ำกว่า YOLO26x | Latency หรือ memory เป็นข้อจำกัด |
+| YOLOv8x-Seg | Forward เร็วกว่า YOLO11x/YOLO26x | mAP ต่ำสุด; VRAM สูงสุด; pipeline ใกล้ YOLO26x | ต้องการ baseline รุ่นก่อน |
 
 ## Trade-off หลัก
 
 ### Accuracy vs Speed
 
-YOLO26x-Seg มี mAP 0.603730; YOLOv9e-Seg มี mAP 0.536642
-และ inference 65.888 ms เทียบกับ 72.458 ms ของ accuracy winner
-Pipeline winner คือ YOLOv9e-Seg (103.376 ms); ไม่ใช้เวลา forward แทน throughput ของ pipeline
+YOLO26x-Seg มี mAP 0.603730; ตัว forward เร็วสุด YOLOv9e-Seg มี mAP 0.536642 และ inference ต่ำกว่า 6.570 ms ส่วน pipeline ต้องดู YOLOv9e-Seg แยก ไม่ถือว่า forward winner เป็น throughput winner
 
 ### Accuracy vs Memory
 
-YOLO26x-Seg ใช้ 952.18 MiB; YOLOv9e-Seg ใช้ 855.41 MiB
-และมี mAP 0.536642
+YOLO26x-Seg ใช้ VRAM มากกว่า YOLOv9e-Seg 96.78 MiB เพื่อ mAP สูงกว่า 6.709 percentage points ไม่ใช้ชื่อขนาดหรือ parameters แทน memory measurement
 
 ## ข้อควรระวังในการตีความ
 
-ไม่มีการทดสอบ statistical significance; near tie เป็นคำบรรยาย ค่า AP/Recall อยู่ช่วง 0–1
-Pipeline ไม่รวม RLE preparation และ disk I/O; VRAM เป็น peak allocated
-MOTS20 ไม่ใช่ผลทดสอบ CCTV robustness ขั้นสุดท้าย และ E/X, C/L ไม่ใช่ capacity เท่ากัน
+ไม่มี significance test; ภาพวิดีโอสัมพันธ์กัน TP-only quality วัดเฉพาะคู่ที่ match และ Recall เป็น mask matching ไม่ใช่ box Recall Pipeline ไม่รวม decode, RLE preparation และการเขียนผล; VRAM เป็น peak allocated ภายใต้ benchmark นี้ การแบ่ง tier ไม่ทำให้ capacity/pretraining เท่ากัน และยังไม่ยืนยัน CCTV robustness ไม่มี weighted score หรือผู้ชนะทุกข้อจำกัด
 
-## ข้อมูลสำหรับนำไปรวมต่อ
+## รายละเอียดเพิ่มเติม
 
-นำ YOLO26x สำหรับ accuracy และ YOLOv9e สำหรับ speed/VRAM; เก็บ YOLO11x เป็นคู่ near tie ของ YOLOv9e ไปเทียบข้าม tier โดยคง protocol และแหล่ง canonical เดิม ยังไม่สรุปครบ 17 โมเดล
-
-[TIER_RESULTS.csv](metrics/TIER_RESULTS.csv) · [REPORT.md](REPORT.md) ·
-[Visual analysis](PRESENTATION_SUMMARY_TH.md) ·
-[Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)
+[REPORT.md](REPORT.md) · [รายงานวิจัยภาพเชิงคุณภาพ](PRESENTATION_SUMMARY_TH.md) · [TIER_RESULTS.csv](metrics/TIER_RESULTS.csv) · [Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)
